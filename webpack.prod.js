@@ -54,6 +54,11 @@ const serviceWorkerConfig = merge(common, {
               { from: './src/json/manifest.json', to: './' },
             ]
         }),
+        new CopyWebpackPlugin({
+            patterns: [
+              { from: './src/js/service-worker/regis-sw.js', to: './' },
+            ]
+        }),
     ]
 });
 
