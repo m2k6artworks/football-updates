@@ -1,0 +1,42 @@
+.club-img {
+    width: 200px;
+    background-color: white;
+    box-shadow: 2px 2px 5px 5px rgba(0, 0, 0, .3);
+    padding: 1.2rem;
+    clip-path: circle();
+}
+
+.club-img img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.fixed-action-btn {
+    position: absolute;
+    right: 25px;
+    bottom: -40px;
+}
+
+.btn-floating.btn-large {
+    width: 64px;
+    height: 64px;
+}
+
+.btn-floating.btn-large i { line-height: 64px; }
+
+#body-title {
+    height: 35vmax;
+    position: relative;
+}
+
+@media only screen and (max-width: 600px) {
+    #body-title {
+        height: auto;
+    }
+
+    .club-img {
+        width: 12vmax;
+        padding: .3rem;
+    }
+}

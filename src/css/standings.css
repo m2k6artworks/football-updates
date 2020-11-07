@@ -1,0 +1,28 @@
+.league-logo {
+    width: 200px;
+    background-color: white; 
+    clip-path: circle();
+    box-shadow: 2px 2px 5px 5px rgba(0, 0, 0, .3);
+    padding: 1.2rem;
+}
+
+.league-logo img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+#body-title {
+    height: 35vmax;
+}
+
+@media only screen and (max-width: 600px) {
+    #body-title {
+        height: auto;
+    }
+
+    .league-logo {
+        width: 12vmax;
+        padding: .3rem;
+    }
+}

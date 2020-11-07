@@ -1,0 +1,54 @@
+{
+    "name": "Football Update",
+    "short_name": "FB Update",
+    "gcm_sender_id": "629516466457",
+    "description": "Europe League Football Information",
+    "start_url": "/index.html",
+    "display": "standalone",
+    "background_color": "#FFFFFF",
+    "theme_color": "#b39ddb",
+    "icons": [
+        {
+            "src": "images/fb-updates.png",
+            "sizes": "640x640",
+            "type": "image/png",
+            "purpose": "any maskable" 
+        },
+        {
+            "src": "images/fb-updates.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable" 
+        },
+        {
+            "src": "images/fb-updates.png",
+            "sizes": "256x256",
+            "type": "image/png",
+            "purpose": "any maskable" 
+        },
+        {
+            "src": "images/fb-updates.png",
+            "sizes": "128x128",
+            "type": "image/png",
+            "purpose": "any maskable" 
+        },
+        {
+            "src": "images/fb-updates.png",
+            "sizes": "64x64",
+            "type": "image/png",
+            "purpose": "any maskable" 
+        },
+        {
+            "src": "images/fb-updates.png",
+            "sizes": "32x32",
+            "type": "image/png",
+            "purpose": "any maskable" 
+        },
+        {
+            "src": "images/fb-updates.png",
+            "sizes": "24x24",
+            "type": "image/png",
+            "purpose": "any maskable" 
+        }
+    ]
+}
