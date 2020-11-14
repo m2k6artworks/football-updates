@@ -63,7 +63,7 @@ function main() {
                             <td>${standingsTable.position}</td>
                             <td>
                                 <div style="display: inline-block; padding: 1%; width: 2em; height: 2em;">
-                                    <img style="max-width: 100%; max-height: 100%;" src="${(standingsTable.team.crestUrl !== null) ? standingsTable.team.crestUrl.replace(/^http:\/\//i, 'https://') : ""}"
+                                    <img alt="team logo" width="100em" height="100em" style="max-width: 100%; max-height: 100%;" src="${(standingsTable.team.crestUrl !== null) ? standingsTable.team.crestUrl.replace(/^http:\/\//i, 'https://') : ""}"
                                 </div>
                             </td>
                             <td>${standingsTable.team.name}</td>

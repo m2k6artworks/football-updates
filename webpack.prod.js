@@ -59,6 +59,16 @@ const serviceWorkerConfig = merge(common, {
               { from: './src/js/service-worker/regis-sw.js', to: './' },
             ]
         }),
+        new CopyWebpackPlugin({
+            patterns: [
+                { from: 'src/images', to: './images' },
+            ]
+        }),
+        new CopyWebpackPlugin({
+            patterns: [
+                { from: 'src/fonts', to: './fonts' },
+            ]
+        }),
     ]
 });
 
