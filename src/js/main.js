@@ -134,7 +134,7 @@ function main() {
                                 <div class="col s12 waves-effect">
                                     <a class="card horizontal hoverable" href="views/detail-team.html?id=${team.id}">
                                         <div class="card-image" style="padding: 1rem;">
-                                            <img src="${team.crestUrl.replace(/^http:\/\//i, 'https://')}" style="
+                                            <img alt="team logo" src="${team.crestUrl.replace(/^http:\/\//i, 'https://')}" style="
                                                 height: 10vmax;
                                                 z-index: 1;">
                                         </div>
@@ -187,7 +187,7 @@ function main() {
                                 <div class="col s12 waves-effect">
                                     <a class="card horizontal hoverable" href="views/detail-team.html?id=${team.id}">
                                         <div class="card-image" style="padding: 1rem;">
-                                            <img src="${team.crestUrl.replace(/^http:\/\//i, 'https://')}" style="
+                                            <img alt="team logo" src="${team.crestUrl.replace(/^http:\/\//i, 'https://')}" style="
                                                 height: 10vmax;
                                                 z-index: 1;">
                                         </div>

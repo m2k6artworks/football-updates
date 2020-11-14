@@ -1,35 +1,20 @@
-import "../../images/uefa-indoor.webp";
-import "../../images/uefa-stadium.webp";
-import "../../images/uefa-trophy.webp";
-import '../../images/fb-updates.png';
-import "../../images/germany.webp";
-import "../../images/europe.webp";
-import "../../images/holland.webp";
-import "../../images/french.webp";
-import "../../images/spain.webp";
-import "../../images/english.webp";
-import "../../images/profile.webp";
-import "../../fonts/Poppins.TTF";
-import "../../fonts/materialicons.woff2";
+importScripts('https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js');
+ 
+// if (workbox)
+//   console.log(`Workbox berhasil dimuat`);
+// else
+//   console.log(`Workbox gagal dimuat`);
 
-const CACHE_NAME = "fb-updates-v4";
-const urlToCache = [
-    "/",
-    "images/fb-updates.png",
-    "manifest.json",
-    "regis-sw.js",
-    "index.html"
-];
-
-const viewsCache = [
+workbox.precaching.precacheAndRoute([
+  "images/fb-updates.png",
+  "manifest.json",
+  "regis-sw.js",
+  "index.html",
   "views/league.html",
   "views/favorite-team.html",
   "views/contact.html",
   "views/standings.html",
-  "views/detail-team.html"
-];
-
-const imagesCache = [
+  "views/detail-team.html",
   "images/uefa-indoor.webp",
   "images/uefa-stadium.webp",
   "images/uefa-trophy.webp",
@@ -39,74 +24,33 @@ const imagesCache = [
   "images/french.webp",
   "images/spain.webp",
   "images/english.webp",
-  "images/profile.webp"
-];
-
-const jsCache = [
+  "images/profile.webp",
   "js/main.bundle.js",
   "js/standings.bundle.js",
-  "js/detail-team.bundle.js"
-];
-
-const fontsCache = [
+  "js/detail-team.bundle.js",
   "fonts/Poppins.TTF",
-  "fonts/materialicons.woff2"
-]
+  "fonts/materialicons.woff2",
+]);
 
-urlToCache.push(...viewsCache);
-urlToCache.push(...imagesCache);
-urlToCache.push(...jsCache);
-urlToCache.push(...fontsCache);
+workbox.routing.registerRoute(
+  "views/league.html",
+  "views/detail-team.html",
+  workbox.strategies.cacheFirst()
+);
 
-self.addEventListener("install", function(event) {
-  event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then(function(cache) {
-          return cache.addAll(urlToCache);
+workbox.routing.registerRoute(
+  new RegExp('https:\/\/api\.football-data\.org\/v2\/'),
+  workbox.strategies.networkFirst({
+    cacheName: 'api-data',
+    plugins: [
+      new workbox.expiration.Plugin({
+        maxEntries: 60,
+        maxAgeSeconds: 7 * 24 * 60 * 60, //7 Days
       })
-  )
-});
+    ],
+  })
+);
 
-self.addEventListener("fetch", function(event) {
-  const apiUrl = "https://api.football-data.org/v2/";
-
-  if(event.request.url.indexOf(apiUrl) > -1) {
-    event.respondWith(
-      caches.open(CACHE_NAME).then(function(cache) {
-        return fetch(event.request).then(function(response) {
-          cache.put(event.request.url, response.clone());
-          return response;
-        });
-      })
-      .catch(error => {
-        console.log(event.request.url);
-        console.log("Fetch Error");
-      })
-    );
-  }
-  else {
-    event.respondWith(
-      caches.match(event.request, { ignoreSearch: true }).then(function(response) {
-          return response || fetch (event.request);
-      })
-    )
-  }
-});
-
-self.addEventListener("activate", function(event) {
-    event.waitUntil(
-      caches.keys().then(function(cacheNames) {
-        return Promise.all(
-          cacheNames.map(function(cacheName) {
-            if (cacheName != CACHE_NAME) {
-              console.log(`ServiceWorker: cache ${cacheName} deleted`);
-              return caches.delete(cacheName);
-            }
-          })
-        );
-      })
-    );
-});
 
 self.addEventListener('push', event => {
   let body;
